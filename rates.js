@@ -22,7 +22,13 @@ http.get(API, function(res) {
 
     res.on('end', function() {
         rates = JSON.parse(rates);
-        console.log(rates);
+        console.log('Cotação do dia ( ' + rates.date + ' )');
+        const curr = Object.keys(rates.rates);
+
+        curr.forEach(function(c) {
+            const rt = rates.rates[c];
+            console.log(c + ': ' + rt);
+        });
     });
 });
 
